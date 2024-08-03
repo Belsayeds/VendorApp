@@ -1,0 +1,93 @@
+.grids-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #fff;
+    overflow: hidden; /* Prevents overflow during animation */
+    flex-wrap: wrap;
+  }
+  
+  .grid {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    opacity: 1; /* Fully visible by default */
+  }
+  
+  .grid-right {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateX(0);
+    opacity: 1; /* Fully visible by default */
+  }
+  
+  .grid-right.hidden {
+    transform: translateX(100%);
+    opacity: 0; /* Fully invisible when hidden */
+  }
+  
+#vendorsTable {
+  font-size: .9em;
+  width: -webkit-fill-available;
+  border-bottom: 1px solid #d7d7d7;
+  border-right: 1px solid #d7d7d7;
+  color: #696969;
+  min-width: 75px;
+  border-collapse: collapse;
+}
+
+#vendorsTable th, #vendorsTable td {
+  border: 1px solid #d7d7d7;
+  padding: 8px;
+  text-align: left;
+}
+
+#vendorsTable th {
+  background-color: #f2f2f2;
+}
+
+#vendorsTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.expanded-row {
+  background-color: #f1f1f1;
+  border: 2px solid grey; /* Border color and width for the expanded row */
+
+  
+}
+
+.expanded-row td {
+  border: none;
+  padding: 8px;
+}
+
+td div {
+  margin: 10px 0;
+  font-size: 1em; /* Consistent font size */
+  color: #6c757d; /* Grey text color */
+}
+
+@media (min-width: 768px) {
+  td div {
+    flex-direction: row;
+    justify-content: space-around;
+  }  
+}
+
+strong { color: #468254;}
+
+.grid-left.expanded {
+  width: 100%; /* Take full width of the container */
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+}
+
+.grid-left {
+  transition: transform 3s ease-in-out, opacity 3s ease-in-out;
+
+}
+

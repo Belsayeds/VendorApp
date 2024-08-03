@@ -1,0 +1,49 @@
+.header-top {
+    background-color: #3c6c44;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+
+  .header-top p{
+    font-size: 1.5em; /* Slightly smaller font size for compactness */
+    color: #fff; /* White text color */
+  }
+
+  .header-bottom {
+ 
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #d7d7d7;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+  .header-top, .header-bottom {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+
+  .header-bottom p{
+    margin: 10px 0;
+    font-size: 1em; /* Consistent font size */
+    color: #6c757d; /* Grey text color */
+  }
+
+  .releaseNotes {
+    border-radius: 10px;
+    border: 1px solid #d7d7d7;
+    height: 40px;
+  }
+
+  .releaseNotes:hover{
+    background-color: #dbdbdb;
+  }
+  

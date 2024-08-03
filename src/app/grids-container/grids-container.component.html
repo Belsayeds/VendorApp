@@ -1,0 +1,143 @@
+<div class="grids-container">
+    <div class="grid grid-left" [class.expanded]="isLeftGridExpanded()">
+      <table id="vendorsTable">
+        <thead>
+          <tr>
+            <th class="checkBoxStyle"  style="width: 10%; text-align: center;">
+              <input type="checkbox" id="selectAll" >
+            </th>
+            <th style="width: 10%; text-align: center;">Vendor ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let vendor of getVendors() let i = index">
+            <tr>
+              <td  style="width: 5%; text-align: center;">
+                <input type="checkbox">
+              </td>
+              <td style="width: 10%; text-align: center;" (click)="toggleExpand(i)">
+                {{ vendor.id }}
+              </td>
+              <td  (click)="toggleExpand(i)">
+                {{ vendor.name }}
+              </td>
+           
+            </tr>
+            
+            <tr *ngIf="isExpanded(i)" class="expanded-row">
+              
+              <td colspan="3">
+                <div><strong>Purposes:</strong> {{ vendor.purposes.join(', ') }}</div>
+                <div><strong>Legitimate interest Purposes:</strong> {{ vendor.legIntPurposes.length ? vendor.legIntPurposes.join(', ') : 'N/A' }}</div>
+                <div><strong>Flexible Purposes:</strong> {{ vendor.flexiblePurposes.length ? vendor.flexiblePurposes.join(', ') : 'N/A' }}</div>
+                <div><strong>Features:</strong> {{ vendor.features.length ? vendor.features.join(', ') : 'N/A' }}</div>
+                <div><strong>Special Features:</strong> {{ vendor.specialFeatures.length ? vendor.specialFeatures.join(', ') : 'N/A' }}</div>
+                <div><strong>Special Purposes:</strong> {{ vendor.specialPurposes.length ? vendor.specialPurposes.join(', ') : 'N/A' }}</div>
+                <hr>
+                <div><strong>Uses Non Cookie Access:</strong> {{ vendor.usesNonCookieAccess }}</div>
+                <div><strong>Cookie Refresh:</strong> {{ vendor.cookieRefresh }}</div>
+                <div><strong>Uses Cookies:</strong> {{ vendor.usesCookies }}</div>
+                <div><strong>Cookie Max Age in Seconds:</strong> {{ vendor.cookieMaxAgeSeconds }}</div>
+                <hr>
+                <div *ngIf="vendor.urls && vendor.urls.length">
+                  <div><strong>Privacy URL:</strong> <a [href]="vendor.urls[0].privacy" target="_blank">{{ vendor.urls[0].privacy }}</a></div>
+                  <div *ngIf="vendor.urls[0].legIntClaim"><strong>Legitimate Interest Claim:</strong> <a [href]="vendor.urls[0].legIntClaim" target="_blank">{{ vendor.urls[0].legIntClaim }}</a></div>
+                </div>
+                <div><strong>Device Storage Disclosure URL:</strong> <a [href]="vendor.deviceStorageDisclosureUrl" target="_blank">{{ vendor.deviceStorageDisclosureUrl }}</a></div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid grid-right" [class.hidden]="!isGridVisible">
+     
+<div>
+
+  <div id="mySideMenu" class="sideMenu">
+    <div class="sideMenuHeader">
+      <h3>IAB TCF 2.2</h3>
+      <hr>
+    </div>
+
+    <div class="purposeContainer">
+      <label for="language">Choose a Language:</label>
+      <select name="purposeLanguage" id="purposeLanguage" >
+        <option value="English">English</option>
+        <option value="Arabic">Arabic</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Italian">Italian</option>
+      </select>
+      <button class="loadPurposes" >Load</button>
+
+      <!-- Purposes Table -->
+      <h3>Purposes</h3>
+      <table id="purposeContainerTable">
+        <thead>
+          <tr>
+            <th>Purpose No.</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container >
+            <tr >
+              <td></td>
+              <td></td>
+            </tr>
+           
+          </ng-container>
+        </tbody>
+      </table>
+
+      <!-- Features Table -->
+      <h3>Features</h3>
+      <table id="featuresContainerTable">
+        <thead>
+          <tr>
+            <th>Feature No.</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+
+      <!-- Special Purposes Table -->
+      <h3>Special Purposes</h3>
+      <table id="specialPurposesContainerTable">
+        <thead>
+          <tr>
+            <th>Special Purpose No.</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container>
+            
+          </ng-container>
+        </tbody>
+      </table>
+
+      <!-- Special Features Table -->
+      <h3>Special Features</h3>
+      <table id="specialFeaturesContainerTable">
+        <thead>
+          <tr>
+            <th>Special Feature No.</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  

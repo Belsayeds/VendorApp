@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
+import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Import CommonModule if needed
+import { HeaderComponent } from './header/header.component'; // Update path as necessary
+import { DataService } from './data.service'; // Update path as necessary
+import { HttpClient } from '@angular/common/http';
+
+
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [HeaderComponent, MainComponent, FooterComponent, HttpClientModule, FormsModule, CommonModule], // Add HeaderComponent to imports
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Vendor-app2.0';
+  
+  title = 'sample-app';
 }

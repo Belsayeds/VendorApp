@@ -1,0 +1,50 @@
+.labels-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    align-items: center;
+    margin-top: 1%;
+
+  }
+  
+  .labels-container .label,.showSelectedDiv label{
+    font-size: 18px;
+    color: #3c6c44;
+  }
+  
+  h2 {color: #000000;}
+
+  /* Base styles for the side button */
+  .showSideMenu {
+    width: 150px;
+   
+    background-color: #3c6c44; /* New button color */
+    color: #fff; /* Text color */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Icon style inside the button */
+  .showSideMenu::before {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Hover effect */
+  .showSideMenu:hover {
+    background-color: #2a4b30; /* Darker shade on hover */
+    transform: translateY(-1%) scale(1.1); /* Slightly larger on hover */
+  }
+  
+  /* Optional: Focus style for accessibility */
+  .showSideMenu:focus {
+    outline: 1px solid #2a4b30; /* Matching focus color */
+    outline-offset: 2px;
+  }
+
+  
