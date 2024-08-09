@@ -5,7 +5,6 @@ import { DataService } from '../data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StateService } from '../shared/state.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 interface Vendor {
   id: number;
@@ -24,6 +23,17 @@ interface Vendor {
   deviceStorageDisclosureUrl: string;
   // Add other necessary fields if needed
 }
+
+interface Purpose {
+  vendorListVersion: number;
+  lastUpdated: string;
+  purposes: any[];
+  specialPurposes: any[];
+  features: any[];
+  specialFeatures: any[];
+  stacks: any[];
+}
+
 @Component({
   selector: 'app-grids-container',
   imports: [CommonModule, FormsModule, HttpClientModule],
@@ -35,9 +45,13 @@ interface Vendor {
 
 export class GridsContainerComponent implements OnInit{ 
 
-  v3Json: any = '';
+  v3Json: any = {};
+  vendors: Vendor[] = [];
+  purpose: Purpose[] = [];
+  purposes: any = {};
   expandedRowIndex: number | null = null;
   isGridVisible: boolean = true;
+  selectedLanguage: string = 'English';
 
 
 constructor(private dataService: DataService , private stateService: StateService,private http: HttpClient) {}
@@ -47,7 +61,8 @@ private v3Local = 'https://vendor-list.consensu.org/v3/vendor-list.json'; // Pat
 
 
   ngOnInit(): void {
-    this.getV3JsonLocal();
+    this.loadV3Json();
+    this.loadPurposeJson();
     this.stateService.gridVisible$.subscribe(
       isVisible => this.isGridVisible = isVisible
     );
@@ -55,23 +70,29 @@ private v3Local = 'https://vendor-list.consensu.org/v3/vendor-list.json'; // Pat
 
   loadV3Json(): void {
     this.dataService.getV3Json().subscribe(
-      (data : string) => this.v3Json = data ,
+      (data : any) => this.vendors= data.vendors, 
       (error: string) => console.error('Error fetching json:', error)
     );
   }
 
-  getV3JsonLocal(): Observable<any> {
-    console.log('a7a');
-    return  this.http.get(this.v3Local, { responseType: 'json' });
+  loadPurposeJson(): void {
+    this.dataService.getPurposeLang(this.selectedLanguage).subscribe(
+      (data : any) => this.purpose= data, 
+      (error: string) => console.error('Error fetching json:', error)
+    );
+
+    
   }
 
 
- // Access the employees array within the JSON object
+
 
 getVendors(): Vendor[] {
-  console.log (this.v3Json.vendors);
+  return Object.values(this.vendors);
+}
 
-  return Object.values(this.v3Json.vendors);
+getpurpose(): Purpose[] {
+  return Object.values(this.purpose);
 }
 
 

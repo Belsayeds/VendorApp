@@ -63,13 +63,53 @@
 
     <div class="purposeContainer">
       <label for="language">Choose a Language:</label>
-      <select name="purposeLanguage" id="purposeLanguage" >
-        <option value="English">English</option>
-        <option value="Arabic">Arabic</option>
-        <option value="Spanish">Spanish</option>
-        <option value="Italian">Italian</option>
+       <select name="purposeLanguage" id="purposeLanguage"  [(ngModel)]="selectedLanguage" >
+              <option value="English">English</option>
+              <option value="Arabic">Arabic</option>
+              <option value="Bulgarian">Bulgarian</option>
+              <option value="Bosnian">Bosnian</option>
+              <option value="Catalan">Catalan</option>
+              <option value="Czech">Czech</option>
+              <option value="Welsh">Welsh</option>
+              <option value="Danish">Danish</option>
+              <option value="German">German</option>
+              <option value="Greek">Greek</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Estonian">Estonian</option>
+              <option value="Basque">Basque</option>
+              <option value="Finnish">Finnish</option>
+              <option value="French">French</option>
+              <option value="Galician">Galician </option>
+              <option value="Hebrew">Hebrew</option>
+              <option value="Croatian">Croatian</option>
+              <option value="Hungarian">Hungarian</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Italian">Italian</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Korean">Korean</option>
+              <option value="Lithuania">Lithuania</option>
+              <option value="Latvian">Latvian</option>
+              <option value="Macedonia">Macedonia</option>
+              <option value="Malay">Malay</option>
+              <option value="Maltese">Maltese</option>
+              <option value="Dutch">Dutch</option>
+              <option value="Norwegian">Norwegian</option>
+              <option value="Polish">Polish</option>
+              <option value="Portugues(Brazil)">Portugues(Brazil)</option>
+              <option value="Portuguese(Portugal)">Portuguese(Portugal)</option>
+              <option value="Romanian">Romanian</option>
+              <option value="Russian">Russian</option>
+              <option value="Slovak">Slovak</option>
+              <option value="Slovenian">Slovenian</option>
+              <option value="Serbian(cyrillic)">Serbian(cyrillic)</option>
+              <option value="Serbian(latin)">Serbian(latin)</option>
+              <option value="Swedish">Swedish</option>
+              <option value="Tagalog">Tagalog</option>
+              <option value="Turkish">Turkish</option>
+              <option value="Ukrainian">Ukrainian</option>
+              <option value="Chinese">Chinese</option>          
       </select>
-      <button class="loadPurposes" >Load</button>
+      <button class="loadPurposes" (click)="this.loadPurposeJson();">Load</button>
 
       <!-- Purposes Table -->
       <h3>Purposes</h3>
@@ -81,7 +121,7 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container >
+          <ng-container *ngFor="let purpose of getpurpose() let i = index">
             <tr >
               <td></td>
               <td></td>
